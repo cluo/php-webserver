@@ -1170,6 +1170,7 @@ case 56:
   parser->cs = cs;
   parser->nread += p - (buffer + off);
 
+  //printf("nread=%d|length=%d\n", parser->nread, len);
   assert(p <= pe && "buffer overflow after parsing execute");
   assert(parser->nread <= len && "nread longer than length");
   assert(parser->body_start <= len && "body starts after buffer end");

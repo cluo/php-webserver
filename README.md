@@ -1,7 +1,7 @@
 WebServer with PHP extension
 === 
-httpparser: A PHP extension for the C http parser from Ruby's Mongrel web server.
-swoole: PHP's asynchronous & concurrent & distributed networking framework.
+* httpparser: A PHP extension for the C http parser from Ruby's Mongrel web server.  
+* swoole: PHP's asynchronous & concurrent & distributed networking framework.
 
 
 Installation

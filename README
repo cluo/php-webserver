@@ -1,36 +1,42 @@
-=== Http Parser extension for PHP
-A PHP extension for the C http parser from Ruby's Mongrel web server.
+WebServer with PHP extension
+=== 
+httpparser: A PHP extension for the C http parser from Ruby's Mongrel web server.
+swoole: PHP's asynchronous & concurrent & distributed networking framework.
 
-=== Installation
 
-To install, you'll need an environment set up to compile PHP extensions.
-On Ubuntu, I think you'll need to install the php5-dev package.
+Installation
+---
 
+swoole extension
+
+```
+pecl install swoole
+```
+
+http_parser extension
+```
 cd ext
 phpize
 ./configure
 make
 sudo make install
+```
 
-Also add the following to your php.ini file:
-
+extension=swoole.so
 extension=httpparser.so
 
-=== Usage
+Run
+---
+```
+php webserver.php
+```
 
-$parser = new HttpParser();
-$parser->execute("GET http://example.com/ HTTP/1.1\r\nHost: example.com\r\n\r\n", 0);
-var_dump($parser->getEnvironment());
-
-.. or see simple_server.php for a better example.
-
-
-=== Credits
+Credits
+--- 
 
 The http parser is from Mongrel http://mongrel.rubyforge.org by Zed Shaw.
 Mongrel Web Server (Mongrel) is copyrighted free software by Zed A. Shaw
 <zedshaw at zedshaw dot com> You can redistribute it and/or modify it under
 either the terms of the GPL.
 
-Also, a big thank you to Alexey Zakhlestin for doing some code review and
-cleaning up this PHP extension.
+The swoole is from <http://pecl.php.net/package/swoole>.

@@ -17,8 +17,6 @@ class HttpServer
 
     function onReceive($serv, $fd, $from_id, $data)
     {
-//        echo "Receive : fd=$fd|data=$data\n";
-
         $parser = new HttpParser;
         if(empty($this->buffers[$fd]))
         {
@@ -28,7 +26,7 @@ class HttpServer
         $buffer = &$this->buffers[$fd];
         $nparsed = &$this->nparsed[$fd];
         $nparsed = $parser->execute($buffer, $nparsed);
-//        echo "nread=".strlen($data)."|nparsed=$nparsed\n";
+        
         if ($parser->hasError())
         {
             $serv->close($fd, $from_id);
@@ -61,5 +59,9 @@ class HttpServer
 $server = new swoole_server('127.0.0.1', 9506);
 $php_http_server = new HttpServer;
 $server->on('Receive', array($php_http_server, 'onReceive'));
-$server->set(array('worker_num'=>1));
+$server->on('Close', array($php_http_server, 'onClose'));
+$server->set(array(
+    'worker_num' => 4,
+	'daemonize'  => 1,
+));
 $server->start();

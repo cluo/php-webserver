@@ -3,7 +3,6 @@ WebServer with PHP extension
 * httpparser: A PHP extension for the C http parser from Ruby's Mongrel web server.  
 * swoole: PHP's asynchronous & concurrent & distributed networking framework.
 
-
 Installation
 ---
 
@@ -22,8 +21,11 @@ make
 sudo make install
 ```
 
+Also add the following to your php.ini file:
+```
 extension=swoole.so
 extension=httpparser.so
+```
 
 Run
 ---
